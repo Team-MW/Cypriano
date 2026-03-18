@@ -595,43 +595,129 @@
     padding-right: 0;
   }
 
+  .expertise-gallery img:nth-child(2) {
+    transform: translateY(30px);
+  }
+
   .expertise-content {
     padding-left: 0;
     border-left: none;
   }
+
+  .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
+  .nav-brand {
+    font-size: 1.5rem;
+  }
+
+  .btn-reserve {
+    padding: 10px 15px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
   .nav-links {
     display: none;
   }
 
+  .hero {
+    min-height: 80vh;
+  }
+
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+  }
+
+  .story-section,
+  .expertise-section,
+  .menu-section,
+  .footer {
+    padding: 80px 5%;
   }
 
   .section-title {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+  }
+
+  .story-container {
+    gap: 40px;
+  }
+
+  .expertise-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .expertise-gallery img {
+    aspect-ratio: 4/3;
+  }
+
+  .expertise-gallery img:nth-child(2) {
+    transform: translateY(0);
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    margin: 40px auto 0;
+  }
+
+  .showcase-pizza {
+    margin: 40px auto;
+  }
+
+  .showcase-pizza img {
+    height: 180px;
+  }
+
+  .diagonal-container {
+    height: 200px;
+  }
+
+  .marquee-band {
+    padding: 15px 0;
+  }
+
+  .marquee-band.outline .marquee-content {
+    font-size: 3rem;
+  }
+
+  .marquee-band .marquee-content {
+    font-size: 1.5rem;
   }
 
   .footer-details {
     flex-direction: column;
-    gap: 50px;
+    gap: 40px;
+    margin-bottom: 40px;
   }
 
-  .marquee-band.outline .marquee-content {
-    font-size: 3.5rem;
+  .footer-brand {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
   }
 
-  .marquee-band .marquee-content {
-    font-size: 2rem;
+  .footer-bottom-links {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  .diagonal-container {
-    height: 250px;
+  .mentions-page {
+    padding-top: 130px;
   }
 
-  .showcase-pizza img {
-    height: 250px;
+  .mentions-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
   }
 }

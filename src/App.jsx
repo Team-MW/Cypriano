@@ -70,7 +70,7 @@ function MainFooter() {
         <div>&copy; {new Date().getFullYear()} Cypriano Pizzeria. L'élégance à l'italienne. Tous droits réservés.</div>
         <div className="footer-bottom-links">
           <Link to="/mentions-legales" className="link-mentions">Mentions Légales</Link>
-          <span className="credit-microdidact">Réalisé par Microdidact</span>
+          <a href="https://microdidact.com/" target="_blank" rel="noopener noreferrer" className="credit-microdidact" style={{ textDecoration: 'none' }}>Réalisé par Microdidact</a>
         </div>
       </div>
     </footer>
@@ -229,7 +229,7 @@ function MentionsLegales() {
 
       <h2>2. Réalisation du site</h2>
       <p>
-        Le design, le développement et la réalisation de ce site ont été entièrement assurés par <strong>Microdidact</strong>.
+        Le design, le développement et la réalisation de ce site ont été entièrement assurés par <strong><a href="https://microdidact.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--c-gold)', textDecoration: 'underline' }}>Microdidact</a></strong>.
         Agence de développement d'applications web et design sur-mesure.
       </p>
 
