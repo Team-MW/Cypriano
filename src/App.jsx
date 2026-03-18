@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import './index.css';
 import './App.css';
 import { ArrowRight } from 'lucide-react';
 
-function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function MainNavbar() {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,26 +24,65 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <div className="wrapper">
-      {/* Navbar section */}
-      <nav className="navbar" style={{
-        backgroundColor: scrolled ? 'rgba(17, 17, 17, 0.95)' : 'transparent',
-        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.05)' : 'none'
-      }}>
-        <div className="nav-brand">Cypriano</div>
-        <div className="nav-links">
-          <a href="#about">L'Essence</a>
-          <a href="#savoir">Savoir-Faire</a>
-          <a href="#menu">La Carte</a>
-        </div>
-        <button className="btn-reserve">Réserver</button>
-      </nav>
+  const isHome = location.pathname === '/';
 
+  return (
+    <nav className="navbar" style={{
+      backgroundColor: scrolled ? 'rgba(17, 17, 17, 0.95)' : (isHome ? 'transparent' : 'var(--c-dark)'),
+      borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.05)' : (isHome ? 'none' : '1px solid rgba(255,255,255,0.05)')
+    }}>
+      <div className="nav-brand"><Link to="/">Cypriano</Link></div>
+      <div className="nav-links">
+        {isHome ? (
+          <>
+            <a href="#about">L'Essence</a>
+            <a href="#savoir">Savoir-Faire</a>
+            <a href="#menu">La Carte</a>
+          </>
+        ) : (
+          <Link to="/">Retour à l'accueil</Link>
+        )}
+      </div>
+      <a href="tel:0962244415" className="btn-reserve" style={{ textAlign: 'center' }}>COMMANDER</a>
+    </nav>
+  );
+}
+
+function MainFooter() {
+  return (
+    <footer className="footer" id="contact">
+      <h2 className="footer-brand">CYPRIANO</h2>
+      <div className="footer-details">
+        <div className="footer-block">
+          <h4>L'Adresse</h4>
+          <p>23 Av. Etienne Billières<br />31300 Toulouse</p>
+        </div>
+        <div className="footer-block">
+          <h4>Les Horaires</h4>
+          <p>Ouvert tous les jours<br />À EMPORTER ET EN LIVRAISON</p>
+        </div>
+        <div className="footer-block">
+          <h4>Commandes</h4>
+          <p>Au 09.62.24.44.15<br />Appelez-nous pour commander.</p>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <div>&copy; {new Date().getFullYear()} Cypriano Pizzeria. L'élégance à l'italienne. Tous droits réservés.</div>
+        <div className="footer-bottom-links">
+          <Link to="/mentions-legales" className="link-mentions">Mentions Légales</Link>
+          <span className="credit-microdidact">Réalisé par Microdidact</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function HomePage() {
+  return (
+    <>
       {/* Hero section : Main showcase of the restaurant's vibe */}
       <section className="hero">
         <div className="hero-background">
-          {/* Main provided image used as dramatic background */}
           <img src="/cypriano.png" alt="Cypriano Pizzeria Paris" />
         </div>
         <div className="hero-content">
@@ -70,7 +119,6 @@ function App() {
 
       {/* Diagonal Designer Marquee Bands */}
       <div className="diagonal-container">
-        {/* Background dark bold outline marquee */}
         <div className="marquee-band outline">
           <div className="marquee-content">
             <span>NAPOLI EST. 2024</span>
@@ -81,7 +129,6 @@ function App() {
             <span>PIZZA D'ECCELLENZA</span>
           </div>
         </div>
-        {/* Foreground sharp gold marquee */}
         <div className="marquee-band gold">
           <div className="marquee-content">
             <span>• PASSIONE • TRADIZIONE • ECCELLENZA • AMORE</span>
@@ -90,7 +137,7 @@ function App() {
         </div>
       </div>
 
-      {/* Savoir-Faire / Expertise section with New generated images */}
+      {/* Savoir-Faire / Expertise section */}
       <section className="expertise-section" id="savoir">
         <div className="expertise-gallery">
           <img src="/chef.png" alt="Chef travaillant la pâte à pizza" />
@@ -113,7 +160,6 @@ function App() {
         <span className="section-label">La Selezione</span>
         <h2 className="section-title">L'Écrin des Classiques</h2>
 
-        {/* Showcasing the generated pizza image beautifully */}
         <div className="showcase-pizza">
           <img src="/pizza.png" alt="Authentique Margherita au feu de bois" />
         </div>
@@ -160,29 +206,63 @@ function App() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
-      {/* Professional Footer */}
-      <footer className="footer" id="contact">
-        <h2 className="footer-brand">CYPRIANO</h2>
-        <div className="footer-details">
-          <div className="footer-block">
-            <h4>L'Adresse</h4>
-            <p>12 Rue de la Paix<br />75002 Paris, France</p>
-          </div>
-          <div className="footer-block">
-            <h4>Les Horaires</h4>
-            <p>Ouvert tous les midis et soirs<br />12:00 - 14:30 | 19:00 - 23:30</p>
-          </div>
-          <div className="footer-block">
-            <h4>Réservations</h4>
-            <p>+33 1 23 45 67 89<br />conciergerie@cypriano.fr</p>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          &copy; {new Date().getFullYear()} Cypriano Pizzeria. L'élégance à l'italienne. Tous droits réservés.
-        </div>
-      </footer>
+function MentionsLegales() {
+  return (
+    <div className="mentions-page">
+      <h1>Mentions Légales</h1>
+
+      <h2>1. Éditeur du site</h2>
+      <p>
+        Le présent site web "Cypriano Pizzeria" est édité par la société CYPRIANO SAS,
+        au capital social de 10 000 euros, immatriculée au Registre du Commerce et des Sociétés de Paris
+        sous le numéro 123 456 789.
+      </p>
+      <p>
+        <strong>Siège social :</strong> 23 Av. Etienne Billières, 31300 Toulouse.<br />
+        <strong>Téléphone :</strong> 09.62.24.44.15<br />
+        <strong>Directeur de la publication :</strong> Cypriano.
+      </p>
+
+      <h2>2. Réalisation du site</h2>
+      <p>
+        Le design, le développement et la réalisation de ce site ont été entièrement assurés par <strong>Microdidact</strong>.
+        Agence de développement d'applications web et design sur-mesure.
+      </p>
+
+      <h2>3. Hébergement</h2>
+      <p>
+        Ce site est hébergé par Vercel Inc., dont le siège social est situé 340 S Lemon Ave #4133 Walnut, CA 91789, USA.
+      </p>
+
+      <h2>4. Propriété intellectuelle</h2>
+      <p>
+        L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur
+        et la propriété intellectuelle. Tous les droits de reproduction sont réservés,
+        y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
+      </p>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <div className="wrapper">
+        <MainNavbar />
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+        </Routes>
+
+        <MainFooter />
+      </div>
+    </Router>
   );
 }
 
