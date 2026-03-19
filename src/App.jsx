@@ -83,7 +83,7 @@ function HomePage() {
       {/* Hero section : Main showcase of the restaurant's vibe */}
       <section className="hero">
         <div className="hero-background">
-          <img src="/cypriano.png" alt="Cypriano Pizzeria Paris" />
+          <img src="/oven_hero.png" alt="Cypriano Pizzeria Paris" />
         </div>
         <div className="hero-content">
           <span className="hero-subtitle">Haute Gastronomie Italienne</span>
