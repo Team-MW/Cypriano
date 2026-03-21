@@ -458,6 +458,70 @@
   color: var(--c-dark);
 }
 
+/* LOCALISATION SECTION */
+.location-section {
+  padding: 150px 5%;
+  background-color: var(--c-dark-soft);
+  text-align: center;
+}
+
+.location-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 60px auto 0;
+  background-color: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  overflow: hidden;
+  text-align: left;
+}
+
+.location-info {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location-info h3 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--c-light);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.location-info p {
+  color: rgba(249, 246, 240, 0.7);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.location-info .open-times {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--c-gold);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.location-map {
+  flex: 1.5;
+  filter: grayscale(80%) contrast(1.1);
+  transition: filter 0.5s ease;
+  min-height: 400px;
+}
+
+.location-map:hover {
+  filter: grayscale(20%) contrast(1.1);
+}
+
 /* FOOTER */
 .footer {
   background-color: #050505;
@@ -678,6 +742,20 @@
 
   .showcase-pizza img {
     height: 180px;
+  }
+
+  .location-container {
+    flex-direction: column;
+  }
+
+  .location-info {
+    padding: 40px 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .location-map iframe {
+    min-height: 300px !important;
   }
 
   .diagonal-container {

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import './index.css';
 import './App.css';
 import { ArrowRight } from 'lucide-react';
+import cartePdf from './assets/Carte-cypriano - .pdf';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,13 +32,25 @@ function MainNavbar() {
       backgroundColor: scrolled ? 'rgba(17, 17, 17, 0.95)' : (isHome ? 'transparent' : 'var(--c-dark)'),
       borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.05)' : (isHome ? 'none' : '1px solid rgba(255,255,255,0.05)')
     }}>
-      <div className="nav-brand"><Link to="/">Cypriano</Link></div>
+      <div className="nav-brand">
+        <Link 
+          to="/" 
+          onClick={() => {
+            if (isHome) {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        >
+          Cypriano
+        </Link>
+      </div>
       <div className="nav-links">
         {isHome ? (
           <>
             <a href="#about">L'Essence</a>
             <a href="#savoir">Savoir-Faire</a>
             <a href="#menu">La Carte</a>
+            <a href="#localisation">Nous Trouver</a>
           </>
         ) : (
           <Link to="/">Retour à l'accueil</Link>
@@ -51,7 +64,7 @@ function MainNavbar() {
 function MainFooter() {
   return (
     <footer className="footer" id="contact">
-      <h2 className="footer-brand">CYPRIANO</h2>
+      <h2 className="footer-brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer', title: 'Retour en haut' }}>CYPRIANO</h2>
       <div className="footer-details">
         <div className="footer-block">
           <h4>L'Adresse</h4>
@@ -91,9 +104,14 @@ function HomePage() {
             L'Arte della <br />
             <span>Pizza Napoletana</span>
           </h1>
-          <button className="btn-primary">
-            DÉCOUVRIR <ArrowRight size={16} />
-          </button>
+          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="tel:0962244415" className="btn-primary">
+              COMMANDER <ArrowRight size={16} />
+            </a>
+            <a href={cartePdf} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ backgroundColor: 'var(--c-gold)', color: 'var(--c-dark)' }}>
+              LA CARTE
+            </a>
+          </div>
         </div>
       </section>
 
@@ -101,7 +119,7 @@ function HomePage() {
       <section className="story-section" id="about">
         <div className="story-container">
           <div className="story-image">
-            <img src="/cypriano.png" alt="Intérieur Pizzeria Cypriano" />
+            <img src="/pizza.png" alt="Pizza Cypriano" />
           </div>
           <div className="story-content">
             <span className="section-label">L'Héritage</span>
@@ -112,7 +130,10 @@ function HomePage() {
             <p className="story-text">
               L'élégance de nos salles ne trouve d'égal que la noblesse de nos ingrédients : truffe fraîche sélectionnée, huiles d'olive confidentielles, et farines biologiques maturées patiemment pour offrir la plus digeste et exquise des pâtes.
             </p>
-            <button className="btn-primary">LA PHILOSOPHIE</button>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+              <a href="tel:0962244415" className="btn-primary">COMMANDER</a>
+              <a href={cartePdf} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ backgroundColor: 'var(--c-gold)', color: 'var(--c-dark)' }}>LA CARTE</a>
+            </div>
           </div>
         </div>
       </section>
@@ -203,6 +224,39 @@ function HomePage() {
             <p className="menu-item-desc">
               Tomate concassée, fior di latte, véritable spianata di Calabre, miel rare infusé au piment infusé maison.
             </p>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '60px', flexWrap: 'wrap' }}>
+          <a href="tel:0962244415" className="btn-primary">COMMANDER</a>
+          <a href={cartePdf} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ backgroundColor: 'var(--c-gold)', color: 'var(--c-dark)' }}>VOIR LA CARTE ENTIÈRE</a>
+        </div>
+      </section>
+
+      {/* Localisation / Carte */}
+      <section className="location-section" id="localisation">
+        <span className="section-label">Où nous trouver</span>
+        <h2 className="section-title">La Localisation</h2>
+        
+        <div className="location-container">
+          <div className="location-info">
+            <h3>Cypriano Pizzeria</h3>
+            <p>23 Av. Etienne Billières<br />31300 Toulouse</p>
+            <p className="open-times">Ouvert tous les jours<br />À emporter et en livraison</p>
+            <a href="https://maps.google.com/?q=23+Av.+Etienne+Billières,+31300+Toulouse" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: '30px' }}>
+              ITINÉRAIRE
+            </a>
+          </div>
+          <div className="location-map">
+            <iframe 
+              title="Carte de localisation Cypriano" 
+              src="https://maps.google.com/maps?q=23%20Av.%20Etienne%20Billi%C3%A8res,%2031300%20Toulouse&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0, minHeight: '400px' }} 
+              allowFullScreen="" 
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </section>
