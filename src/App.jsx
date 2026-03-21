@@ -125,10 +125,10 @@ function HomePage() {
             <span className="section-label">L'Héritage</span>
             <h2 className="section-title">L'authenticité,<br />élevée au rang d'art.</h2>
             <p className="story-text">
-              Situé au cœur de Paris, Cypriano réinvente l'expérience de la pizzeria traditionnelle. Dans un cadre feutré et résolument contemporain, nous vous proposons une immersion dans la perfection culinaire napolitaine.
+              Situé en plein cœur du quartier Saint-Cyprien à <strong>Toulouse</strong> (au 23 Avenue Étienne Billières), Cypriano réinvente l'expérience de la <strong>véritable pizzeria napolitaine</strong>. Dans une ambiance chaleureuse et résolument contemporaine, nous vous offrons un voyage gustatif exclusif autour de l'Italie.
             </p>
             <p className="story-text">
-              L'élégance de nos salles ne trouve d'égal que la noblesse de nos ingrédients : truffe fraîche sélectionnée, huiles d'olive confidentielles, et farines biologiques maturées patiemment pour offrir la plus digeste et exquise des pâtes.
+              Que ce soit en livraison, à emporter ou sur place, l'exigence reste la même : chaque <strong>pizza au feu de bois</strong> est préparée avec une farine biologique maturée patiemment, des truffes fraîches et de prestigieuses huiles d'olive. Découvrez pourquoi nous sommes la référence incontournable de la <strong>pizza à Toulouse (31300)</strong>.
             </p>
             <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
               <a href="tel:0962244415" className="btn-primary">COMMANDER</a>
